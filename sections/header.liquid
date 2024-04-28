@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">{{ shop.name }}</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if section.settings.menu.links == blank %}
+          {% assign main_menu_linklist = linklists[section.settings.menu].links %}
+        {% else %}
+          {% assign main_menu_linklist = section.settings.menu.links %}
+        {% endif %}
+        {% for link in main_menu_linklist %}
+          {% if link.links != blank %}
+            {% assign link_handle = link.handle | replace: '-', '_' %}
+            
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+
+              {% for childlink in link.links %}
+                <a href="{{ childlink.url }}" class="-m-3 p-3 flex items start rounded-lg hover:bg-gray-100">
+                    <div class="ml-4">
+                        <p class="text-gray-900 text-base font-medium">
+                            {{ childlink.title }}
+                        </p>
+                    </div>
+                </a>
+            {% endfor %}
+            
+            </li>
+
+
+
+          {% else %}
+          <li class="nav-item">
+            <a href="{{ link.url }}" class="text-base text-gray-500 hover:text-gray-900">{{ link.title }}</a>
+          </li>
+            
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+      <div class="d-flex">right menu</div>
+    </div>
+  </div>
+</nav>
