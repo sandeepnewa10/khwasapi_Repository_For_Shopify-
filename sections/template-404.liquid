@@ -1,21 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        {{ section.settings.title }}</h1>
-      <h3>
-        {% if section.settings.button_url == blank %}
-          {% assign shop_url = shop.secure_url %}
-        {% else %}
-          {% assign shop_url = section.settings.button_url %}
-        {% endif %}
-      </h3>
-
-      <a href="{{ shop_url }}" class="btn btn-dark">{{ section.settings.button_label }}</a>
+<section class="page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>
+          {{ section.settings.title }}</h1>
+        <h3>
+          {% if section.settings.button_url == blank %}
+            {% assign shop_url = shop.secure_url %}
+          {% else %}
+            {% assign shop_url = section.settings.button_url %}
+          {% endif %}
+        </h3>
+        <a href="{{ shop_url }}" class="btn btn-dark">{{ section.settings.button_label }}</a>
+      </div>
     </div>
   </div>
-</div>
-
+</section>
 
 {% schema %}
   {
