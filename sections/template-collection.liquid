@@ -10,138 +10,39 @@
 </section>
 <section class="pt-0 bg-light">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-5 col-sm-5 col-md-6">
-        <span>15 Products</span>
-      </div>
-      <div class="col-7 col-sm-7 col-md-6">
-        <div class="btn-group d-flex justify-content-end align-items-center">
-          <div class="dropdown mx-3">
-            <a
-              class="btn btn-outline-secondary rounded-0 dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
-              What's New
-            </a>
+    <div class="px-4 py-8">
+      <a href="{{ routes.collections_url }}" class="text-base text-gray-500 hover:underline text-center block my-4">Go back to collections</a>
+      {% paginate collection.products by section.settings.number_of_products_per_page %}
+        <h1 class="text-3xl text-center">{{ collection.title }}</h1>
 
-            <ul class="dropdown-menu rounded-0">
-              <li>
-                <a class="dropdown-item" href="#">Price high to low</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Price low to hight</a>
-              </li>
-            </ul>
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {% for product in collection.products %}
+              {% render 'product-card'
+                , product_product: product %}
+            {% else %}
+              <p>There are no products inside of this collection</p>
+            {% endfor %}
           </div>
-          <span>Filter</span>
         </div>
-      </div>
-    </div>
-    <div class="row">
-
-      {% for collection in collections %}
-        {% if collection.all_products_count > 0 %}
-          <div class="col-sm-6 col-md-3 col-lg-3">
-            <div class="product">
-              <figure class="product__image">
-
-                <a href="{{ collection.url }}">
-                  {% if collection.featured_image != blank %}
-                    {% assign collection_image = collection.featured_image %}
-                  {% else %}
-                    {% assign collection_image = collection.products.first.image %}
-                  {% endif %}
-
-                  <img
-                    class="w-full h-full object-cover transition duration-1000 ease-in-out transform hover:scale-105"
-                    src="{{  collection_image | img_url: '300x' }}"
-                    srcset="{% render 'bgset', image:  collection_image %}"
-                    sizes="(min-width: 981px) 50vw, 100vw"
-                    width="300"
-                    height="{{ 300 | divided_by:  collection_image.aspect_ratio | round }}"
-                    alt="{{  collection_image.alt }}" /></a>
-                <div class="product__hover" style="display: none;">
-                  <ul class="product__hover-list">
-                    <li>
-                      <a href="#" title="Quick View">
-                        <span>
-                          <i class="bx bx-plus"></i>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" title="Add to cart">
-                        <span>
-                          <i class="bx bx-cart"></i>
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="product__like" style="display: none;">
-                  <a href="#" title="Add Wishlist">
-                    <i class="bx bx-heart bx-sm"></i>
-                  </a>
-                </div>
-              </figure>
 
 
-              <div class="product__meta">
-                <div class="product__meta-title">
-                  <h2>
-                    <a href="{{ collection.url }}">{{ collection.title }}</a>
-                  </h2>
-                </div>
-                <div class="product__meta-price" style="display: none;">
-
-                  <a href="#">Add to cart</a>
-                </div>
-              </div>
-
-
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-
-
-    </div>
-
-    <div class="row" style="display: none;">
-      <div class="col">
-        <nav class="d-inline-block">
-          <ul class="pagination">
-            <li class="page-item active">
-              <a href="" class="page-link">1</a>
-            </li>
-            <li class="page-item">
-              <a href="" class="page-link">2</a>
-            </li>
-            <li class="page-item">
-              <a href="" class="page-link">3</a>
-            </li>
-            <li class="page-item">
-              <a href="" class="page-link">4</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+        {% render 'pagination'
+          , pagination: paginate %}
+      {% endpaginate %}
     </div>
   </div>
 </section>
 
-
 {% schema %}
   {
-    "name": "Template List Collections",
+    "name": "Template Collection",
     "settings": [
       {
-        "type": "text",
-        "id": "title",
-        "default": "Collections",
-        "label": "Title"
+        "type": "number",
+        "id": "number_of_products_per_page",
+        "default": 6,
+        "label": "Number of products per page"
       }
     ]
   }
