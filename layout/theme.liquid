@@ -10,10 +10,16 @@
     {{ content_for_header }}
     <!-- Header hook for plugins -->
     {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
-    {{ 'main.js' | asset_url | script_tag }}
 
-    {% comment %} <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> {% endcomment %}
+
+    
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+  
+    {% comment %} {{ 'main.js'  | asset_url | script_tag }} {% endcomment %}
+
+    {% comment %}  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> {% endcomment %}
   </head>
   <body>
     {% section 'header' %}
@@ -21,5 +27,8 @@
     <main role="main">    
       {{ content_for_layout }}
     </main>
+
+    {{ 'main.js'  | asset_url | script_tag }}
+
   </body>
 </html>

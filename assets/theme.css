@@ -1,7 +1,7 @@
 /*========================== Base ==========================*/
 /* Box model */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -260,46 +260,6 @@ input {
 }
 
 /*=============== GOOGLE FONTS ===============*/
-@font-face {
-  font-family: "Poppins";
-  src: url("Poppins-Bold.eot");
-  src: url("Poppins-Bold.eot?#iefix") format("embedded-opentype"), url("Poppins-Bold.woff2") format("woff2"), url("Poppins-Bold.woff") format("woff"), url("Poppins-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Poppins";
-  src: url("Poppins-Medium.eot");
-  src: url("Poppins-Medium.eot?#iefix") format("embedded-opentype"), url("Poppins-Medium.woff2") format("woff2"), url("Poppins-Medium.woff") format("woff"), url("Poppins-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Poppins";
-  src: url("Poppins-Light.eot");
-  src: url("Poppins-Light.eot?#iefix") format("embedded-opentype"), url("Poppins-Light.woff2") format("woff2"), url("Poppins-Light.woff") format("woff"), url("Poppins-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Poppins";
-  src: url("Poppins-Regular.eot");
-  src: url("Poppins-Regular.eot?#iefix") format("embedded-opentype"), url("Poppins-Regular.woff2") format("woff2"), url("Poppins-Regular.woff") format("woff"), url("Poppins-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Poppins";
-  src: url("Poppins-SemiBold.eot");
-  src: url("Poppins-SemiBold.eot?#iefix") format("embedded-opentype"), url("Poppins-SemiBold.woff2") format("woff2"), url("Poppins-SemiBold.woff") format("woff"), url("Poppins-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
 /*========================== Abstract ==========================*/
 /*=============== VARIABLES CSS ===============*/
 :root {

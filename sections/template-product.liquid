@@ -1,36 +1,9 @@
-{{ 'owl.carousel.css' | asset_url | stylesheet_tag }}
 {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
-{{ 'owl.theme.default.css' | asset_url | stylesheet_tag }}
 {{ 'owl.theme.default.min.css' | asset_url | stylesheet_tag }}
-
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-  integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"></script>
-{% comment %} {{ 'owl.carousel.min.js' | asset_url | script_tag }} {% endcomment %}
-
-{% comment %} <script src="{{ 'owl.carousel.min.js' | asset_url }}" defer="defer"></script> {% endcomment %}
-{% comment %} <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script> {% endcomment %}
+{{ 'jquery-3.7.1.min.js' | asset_url | script_tag }}
+{{ 'owl.carousel.min.js' | asset_url | script_tag }}
 
 {% assign selected_variant = product.selected_or_first_available_variant %}
-
-<section class="hero bg-light" style="display: nonoe;">
-  <div class="container">
-    <div class="row">
-      <div class="col text-center">
-        <h1>Furniture</h1>
-        <nav class="breadcrumb d-flex align-item-center justify-content-center">
-          <a class="breadcrumb-item" href="#">Home</a>
-          <span class="breadcrumb-item active" aria-current="page">Furniture</span>
-        </nav>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <section class="bg-light">
   <div class="container">
     <div class="row gutter-2 gutter-md-4 justify-content-between">
@@ -81,6 +54,28 @@
             <div class="col-12">
               <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
@@ -293,7 +288,7 @@
   </script>
 
   <script>
-        $(document).ready(function () {
+    $(document).ready(function () {
       var bigimage = $("#big");
       var thumbs = $("#thumbs");
       //var totalslides = 10;
@@ -378,6 +373,31 @@
     var number = $(this).index();
     bigimage.data("owl.carousel").to(number, 300, true);
       });
+    
+      /*=============== Related product slider ===============*/
+      $(".related__product").owlCarousel({
+    loop: false,
+    rewind: true,
+    margin: 20,
+    
+    nav: true,
+    navText: [
+      '<span><i class="bx bx-chevron-left md" aria-hidden="true"></i></span>',
+      '<span><i class="bx bx-chevron-right md" aria-hidden="true"></i></span>',
+    ],
+    responsive: {
+      0: {
+        items: 2,
+      },
+      600: {
+        items: 3,
+      },
+      1000: {
+        items: 4,
+      },
+    
+    });
+    });
   </script>
 
   {% schema %}
