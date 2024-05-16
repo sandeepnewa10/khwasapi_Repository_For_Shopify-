@@ -1,38 +1,68 @@
-<section class="hero bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col text-center">
-        <h1>{{ section.settings.title }}</h1>
-
+{% paginate collection.products by section.settings.number_of_products_per_page %}
+  <section class="hero bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <h1 class="text-3xl text-center">{{ collection.title }}</h1>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="pt-0 bg-light">
-  <div class="container">
-    <div class="px-4 py-8">
-      <a href="{{ routes.collections_url }}" class="text-base text-gray-500 hover:underline text-center block my-4">Go back to collections</a>
-      {% paginate collection.products by section.settings.number_of_products_per_page %}
-        <h1 class="text-3xl text-center">{{ collection.title }}</h1>
+  </section>
 
-        <div class="max-w-6xl mx-auto">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {% for product in collection.products %}
-              {% render 'product-card'
-                , product_product: product %}
-            {% else %}
-              <p>There are no products inside of this collection</p>
-            {% endfor %}
+  <section class="pt-0 bg-light">
+    <div class="container">
+      <!-- Filter section start -->
+      <div class="row align-items-center">
+        <div class="col-5 col-sm-5 col-md-6">
+          <span>15 Products</span>
+        </div>
+        <div class="col-7 col-sm-7 col-md-6">
+          <div class="btn-group d-flex justify-content-end align-items-center">
+            <div class="dropdown mx-3">
+              <a
+                class="btn btn-outline-secondary rounded-0 dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                What's New
+              </a>
+
+              <ul class="dropdown-menu rounded-0">
+                <li>
+                  <a class="dropdown-item" href="#">Price high to low</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Price low to hight</a>
+                </li>
+              </ul>
+            </div>
+            <span>Filter</span>
           </div>
         </div>
+      </div>
+      <!-- Filter section end -->
+      <!-- product list start -->
+      <div class="row">
+
+        {% for product in collection.products %}
+          {% render 'product-card'
+            , product_product: product %}
+        {% else %}
+          <p>There are no products inside of this collection</p>
+        {% endfor %}
+      </div>
+    <!-- product list end -->
 
 
-        {% render 'pagination'
-          , pagination: paginate %}
-      {% endpaginate %}
     </div>
-  </div>
-</section>
+  </section>
+
+
+  {% render 'pagination'
+    , pagination: paginate %}
+{% endpaginate %}
+
 
 {% schema %}
   {

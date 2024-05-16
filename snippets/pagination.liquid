@@ -1,21 +1,25 @@
 {% if pagination.pages > 0 %}
-    <nav role="navigation" class="flex justify-center my-8">
-        {% if pagination.previous %}
-            <a href="{{pagination.previous.url}}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white py-3 px-8 mx-1 rounded-sm font-medium">{{ pagination.previous.title }}</a>
-        {% endif %}
-
-        {% comment %} {% for part in pagination.parts %}
-            {% if part.is_link %}
-                <a href="{{part.url}}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white py-3 px-8 mx-1 rounded-sm font-medium">{{ part.title }}</a>  
-            {% else %}
-                <span class="border border-gray-600 text-gray-600  py-3 px-8 mx-1 rounded-sm font-medium">{{part.title}}</span>
+    <div class="container">
+    <div class="row">
+        <div class="col">
+          <nav class="d-inline-block">
+            <ul class="pagination">
+                {% if pagination.previous %}
+              <li class="page-item active">               
+                    <a href="{{pagination.previous.url}}" class="page-link">{{ pagination.previous.title }}</a>                          
+              </li>
+            {% endif %}           
+             
+              {% if pagination.next %}<li class="page-item">
+                <a href="{{pagination.next.url}}" class="page-link">{{ pagination.next.title }}</a>
+                </li>
             {% endif %}
-        {% endfor %} {% endcomment %}
-
-        {% if pagination.next %}
-            <a href="{{pagination.next.url}}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white py-3 px-8 mx-1 rounded-sm font-medium">{{ pagination.next.title }}</a>
-        {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+      </div>      
         
-    </nav>
+    
   {% endif %}
 

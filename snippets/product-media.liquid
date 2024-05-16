@@ -1,9 +1,12 @@
 {% case media.media_type %}
     {% when 'image' %}
         <img
-              c
-              src="{{ media | img_url: '450x450' }}"             
-              sizes="(min-width: 981px) 50vw, 100vw"             
+              
+              src="{{ media | img_url: '1000x1000' }}"
+              srcset="{% render 'bgset', image: media %}"
+              sizes="(min-width: 981px) 50vw, 100vw"
+              width="900"
+              height="{{ 900 | divided_by: media.aspect_ratio | round }}"
               alt="{{ media.preview_image.alt }}" />
     {% when 'external_video' %}
         {{ media |  external_video_tag: class:'w-full h-80 object-cover' }}
