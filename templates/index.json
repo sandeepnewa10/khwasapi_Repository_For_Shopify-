@@ -7,5 +7,5 @@
       }
     }
   },
-  "order": ["featured-collection"]
+  "order": ["featured-collection", "image-slider"]
 }
