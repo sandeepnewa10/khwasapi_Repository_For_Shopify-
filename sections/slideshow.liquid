@@ -1,4 +1,12 @@
-<div data-section-id="{{ section.id }}" data-section-type="featured-images">
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+{{ 'jquery-3.7.1.min.js' | asset_url | script_tag }}
+{{ 'swiper-bundle.min.js' | asset_url | script_tag }}
+
+
+<div
+  class="banner"
+  data-section-id="{{ section.id }}"
+  data-section-type="featured-images">
 
   {% assign sectionBorder = section.settings.border %}
   {% assign textShadow = section.settings.text-shadow %}
@@ -12,7 +20,7 @@
     {% endfor %}
   {% endif %}
 
-  <div class="home-module home-feature-row
+  <div class="swiper-wrapper home-module home-feature-row
     row-of-{{featureCount}} text-shadows-{{ textShadow }}
     {% if sectionBorder %}has-border{% endif %}">
 
@@ -48,8 +56,8 @@
               {% endif %}
             {%- endcapture -%}
 
-            <div class="home-feature">
-              <div class="home-feature-image">
+            <div class="swiper-slide home-feature">
+              <div class="banner-image image-overlay home-feature-image">
                 {{- image_html -}}
               </div>
 
@@ -58,19 +66,27 @@
               {% endif %}
 
               {% if textAbove != blank or heading != blank or textBelow != blank %}
-                <div class="home-feature-content text-color-{{ textColor }} text-positioned-{{ textPosition }} rte">
-                  {% if textAbove != blank %}
-                    <p>{{ textAbove }}</p>
-                  {% endif %}
+                <div class="container">
+                  <div class="row align-items-end align-items-center vh-100">
+                    <div class="col-lg-8 text-white">
+                      <div class="home-feature-content text-color-{{ textColor }} text-positioned-{{ textPosition }} rte">
+                        {% if textAbove != blank %}
+                          <p>{{ textAbove }}</p>
+                        {% endif %}
 
-                  {% if heading != blank %}
-                    <h3>{{ heading }}</h3>
-                  {% endif %}
+                        {% if heading != blank %}
+                          <h3>{{ heading }}</h3>
+                        {% endif %}
 
-                  {% if textBelow != blank %}
-                    <p>{{ textBelow }}</p>
-                  {% endif %}
+                        {% if textBelow != blank %}
+                          <p>{{ textBelow }}</p>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+
               {% endif %}
             </div>
           {% endfor %}
@@ -98,7 +114,34 @@
   </div>
 
 </div>
-
+<script>
+    $(document).ready(function () {
+      var Swipes = new Swiper(".banner", {
+  loop: true,
+  parallax: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  parallax: true,
+  pagination: {
+    el: ".swiper-pagination",
+  },
+  });var Swipes = new Swiper(".banner", {
+  loop: true,
+  parallax: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  parallax: true,
+  pagination: {
+    el: ".swiper-pagination",
+  },
+  });
+      
+    });
+</script>
 {% schema %}
   {
     "name": "Gallery",
